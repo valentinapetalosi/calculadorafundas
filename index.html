@@ -292,19 +292,29 @@ h1{
 
 .ideal-banner{
   display:flex;
-  align-items:center;
+  align-items:flex-start;
   gap:10px;
   background:var(--green-soft);
   color:var(--green);
   border-radius:14px;
   padding:14px 18px;
   margin-bottom:14px;
+  animation:rise .35s ease both;
+}
+.ideal-banner svg{width:22px;height:22px;flex:0 0 auto;margin-top:2px;}
+.ideal-banner-text{display:flex;flex-direction:column;gap:4px;}
+.ideal-banner-title{
   font-family:'Literata',serif;
   font-weight:600;
   font-size:1.05rem;
-  animation:rise .35s ease both;
 }
-.ideal-banner svg{width:22px;height:22px;flex:0 0 auto;}
+.ideal-banner-sub{
+  font-family:'Karla',sans-serif;
+  font-weight:400;
+  font-size:.82rem;
+  color:var(--ink-soft);
+  line-height:1.4;
+}
 @media (prefers-reduced-motion: reduce){
   .ideal-banner{animation:none;}
 }
@@ -474,7 +484,7 @@ footer a{color:var(--accent-deep);}
 
 <script>
 (function(){
-  var MIN_SOBRA = 2; // cm mínimos que deben sobrar de ancho Y de largo (contra la medida exterior) para contar como funda ideal
+  var MIN_SOBRA = 3; // cm mínimos que deben sobrar de ancho Y de largo (contra la medida exterior) para contar como funda ideal
 
   // Los 4 diseños de funda de computador existen los DOS tamaños (13"/13-14"
   // y 15") como variante "Talla" dentro de la misma ficha de producto — no
@@ -579,7 +589,10 @@ footer a{color:var(--accent-deep);}
     var html =
       '<div class="ideal-banner">' +
         '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-        '<span>¡Encontramos tu funda ideal!</span>' +
+        '<div class="ideal-banner-text">' +
+          '<span class="ideal-banner-title">¡Encontramos tu funda ideal!</span>' +
+          '<span class="ideal-banner-sub">Entre la medida de tu equipo y la de la funda dejamos mínimo 3&nbsp;cm de margen de cada lado, por eso esta te debería quedar bien.</span>' +
+        '</div>' +
       '</div>' +
       '<div class="stack">' +
         '<div class="card">' +
